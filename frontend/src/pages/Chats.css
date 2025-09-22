@@ -1,0 +1,2 @@
+.chat-row{display:flex;gap:12px;padding:12px;align-items:center;border-bottom:1px solid rgba(155,64,98,0.03)}
+.avatar{width:56px;height:56px;border-radius:12px;background:linear-gradient(90deg,var(--primary),var(--accent))}

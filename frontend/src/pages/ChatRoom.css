@@ -1,0 +1,6 @@
+.chat-area{display:flex;flex-direction:column;height:520px;padding:12px}
+.messages{flex:1;overflow:auto;display:flex;flex-direction:column;gap:8px;padding:8px}
+.bubble{max-width:70%;padding:10px;border-radius:12px}
+.bubble.me{align-self:flex-end;background:var(--primary);color:white}
+.bubble.them{align-self:flex-start;background:#fff;border:1px solid rgba(155,64,98,0.06)}
+.composer{display:flex;gap:8px;padding:12px;border-top:1px solid rgba(155,64,98,0.03)}

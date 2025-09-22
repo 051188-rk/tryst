@@ -1,0 +1,33 @@
+{
+  "info": {
+    "name": "Lovely Backend Collection"
+  },
+  "item": [
+    {
+      "name": "Signup",
+      "request": {
+        "method": "POST",
+        "body": {
+          "mode": "raw",
+          "raw": "{ \"email\":\"a@b.com\",\"password\":\"pass\",\"name\":\"Alex\",\"username\":\"alex\" }"
+        },
+        "url": {
+          "raw": "{{base}}/api/auth/signup"
+        }
+      }
+    },
+    {
+      "name": "Login",
+      "request": {
+        "method": "POST",
+        "body": {
+          "mode": "raw",
+          "raw": "{ \"email\":\"a@b.com\",\"password\":\"pass\" }"
+        },
+        "url": {
+          "raw": "{{base}}/api/auth/login"
+        }
+      }
+    }
+  ]
+}
