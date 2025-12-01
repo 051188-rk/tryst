@@ -14,7 +14,7 @@ const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
     folder: 'lovely_photos',
-    allowed_formats: ['jpg','jpeg','png','webp']
+    allowed_formats: ['jpg', 'jpeg', 'png', 'webp']
   }
 });
 
@@ -22,8 +22,8 @@ const parser = multer({ storage });
 
 const router = express.Router();
 
-router.post('/photo', auth, parser.single('photo'), async (req,res) => {
-  if(!req.file) return res.status(400).json({ error: 'No file' });
+router.post('/photo', parser.single('photo'), async (req, res) => {
+  if (!req.file) return res.status(400).json({ error: 'No file' });
   const file = req.file;
   res.json({ url: file.path, public_id: file.filename });
 });

@@ -5,19 +5,19 @@ const Match = require('../models/match');
 
 const router = express.Router();
 
-router.post('/', auth, async (req,res) => {
+router.post('/', auth, async (req, res) => {
   const { to, type } = req.body;
-  if(!to) return res.status(400).json({ error: 'Missing "to" user id' });
+  if (!to) return res.status(400).json({ error: 'Missing "to" user id' });
   const existing = await Swipe.findOne({ from: req.userId, to });
-  if(existing) return res.status(400).json({ error: 'Already swiped' });
+  if (existing) return res.status(400).json({ error: 'Already swiped' });
 
   const s = await Swipe.create({ from: req.userId, to, type: type || 'like' });
 
-  if(s.type === 'like'){
+  if (s.type === 'like') {
     const reciprocal = await Swipe.findOne({ from: to, to: req.userId, type: 'like' });
-    if(reciprocal){
+    if (reciprocal) {
       let m = await Match.findOne({ users: { $all: [req.userId, to] } });
-      if(!m){
+      if (!m) {
         m = await Match.create({ users: [req.userId, to] });
       }
       return res.json({ ok: true, match: m });
@@ -25,6 +25,20 @@ router.post('/', auth, async (req,res) => {
   }
 
   res.json({ ok: true, swipe: s });
+});
+
+// Get users who liked the current user
+router.get('/likes', auth, async (req, res) => {
+  try {
+    const likes = await Swipe.find({
+      to: req.userId,
+      type: 'like'
+    }).populate('from', '-passwordHash');
+    res.json(likes);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to fetch likes' });
+  }
 });
 
 module.exports = router;

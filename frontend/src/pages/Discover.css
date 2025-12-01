@@ -1,3 +1,69 @@
-.deck-area{position:relative;height:520px;display:flex;align-items:center;justify-content:center;padding:20px}
-.card-large{padding:0;overflow:visible}
-.controls .btn{width:64px;height:64px;border-radius:999px;padding:0;font-size:20px}
+.discover-header {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.discover-header h2 {
+    margin-bottom: 8px;
+}
+
+.deck {
+    padding: 0;
+    overflow: hidden;
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+}
+
+.deck-area {
+    position: relative;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    min-height: 500px;
+}
+
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.empty-state h3 {
+    margin: 0;
+    color: var(--text);
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    padding: 24px;
+    border-top: 1px solid var(--border);
+    background: var(--bg-secondary);
+}
+
+.swipe-btn {
+    width: 64px;
+    height: 64px;
+    font-size: 28px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.swipe-btn:hover {
+    transform: scale(1.1);
+}
+
+.swipe-btn:active {
+    transform: scale(1.05);
+}
+
+.card-large {
+    max-width: 600px;
+    margin: 0 auto;
+}

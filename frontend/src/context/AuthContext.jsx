@@ -15,7 +15,7 @@ export const AuthProvider = ({ children }) => {
           const { data } = await api.get('/users/me');
           setUser(data);
         } catch (err) {
-          console.error(err);
+          console.error('Auth check failed:', err);
           localStorage.removeItem('token');
         }
       }
@@ -34,8 +34,12 @@ export const AuthProvider = ({ children }) => {
     setUser(null);
   };
 
+  const updateUser = (userData) => {
+    setUser(userData);
+  };
+
   return (
-    <AuthContext.Provider value={{ user, login, logout, loading }}>
+    <AuthContext.Provider value={{ user, login, logout, updateUser, loading }}>
       {children}
     </AuthContext.Provider>
   );
