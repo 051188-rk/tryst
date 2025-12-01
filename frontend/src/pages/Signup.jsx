@@ -70,6 +70,7 @@ export default function Signup() {
     <div className="page container">
       <div className="card auth-card fade-in">
         <div className="auth-header">
+          <img src="/tryst.png" alt="Tryst" className="auth-logo" />
           <h2>Create your account</h2>
           <p className="muted">Join and start meeting amazing people</p>
         </div>

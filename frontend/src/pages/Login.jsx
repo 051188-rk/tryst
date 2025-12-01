@@ -34,6 +34,7 @@ export default function Login() {
     <div className="page container">
       <div className="card auth-card fade-in">
         <div className="auth-header">
+          <img src="/tryst.png" alt="Tryst" className="auth-logo" />
           <h2>Welcome back</h2>
           <p className="muted">Log in to continue swiping and chatting</p>
         </div>

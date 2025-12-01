@@ -20,23 +20,23 @@ const PrivateRoute = ({ children }) => {
   return user ? children : <Navigate to="/login" />;
 };
 
-export default function App(){
+export default function App() {
   const { user } = useContext(AuthContext);
 
   return (
     <div>
       <Routes>
-        <Route path="/" element={user ? <Navigate to="/discover" /> : <Landing/>} />
-        <Route path="/login" element={<Login/>} />
-        <Route path="/signup" element={<Signup/>} />
-        <Route path="/discover" element={<PrivateRoute><Discover/></PrivateRoute>} />
-        <Route path="/profile" element={<PrivateRoute><Profile/></PrivateRoute>} />
-        <Route path="/likes" element={<PrivateRoute><Likes/></PrivateRoute>} />
-        <Route path="/matches" element={<PrivateRoute><Matches/></PrivateRoute>} />
-        <Route path="/premium" element={<PrivateRoute><Premium/></PrivateRoute>} />
-        <Route path="/chats" element={<PrivateRoute><Chats/></PrivateRoute>} />
-        <Route path="/chat/:id" element={<PrivateRoute><ChatRoom/></PrivateRoute>} />
-        <Route path="/user/:id" element={<PrivateRoute><UserProfile/></PrivateRoute>} />
+        <Route path="/" element={user ? <Navigate to="/discover" /> : <Landing />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/discover" element={<PrivateRoute><Discover /></PrivateRoute>} />
+        <Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>} />
+        <Route path="/likes" element={<PrivateRoute><Likes /></PrivateRoute>} />
+        <Route path="/matches" element={<PrivateRoute><Matches /></PrivateRoute>} />
+        <Route path="/premium" element={<PrivateRoute><Premium /></PrivateRoute>} />
+        <Route path="/chats" element={<PrivateRoute><Chats /></PrivateRoute>} />
+        <Route path="/chat/:id" element={<PrivateRoute><ChatRoom /></PrivateRoute>} />
+        <Route path="/user/:id" element={<PrivateRoute><UserProfile /></PrivateRoute>} />
       </Routes>
 
       {user && <BottomNav />}
