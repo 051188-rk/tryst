@@ -10,6 +10,7 @@
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
   border: 2px solid var(--border);
   background: var(--card-bg);
+  will-change: transform;
 }
 
 .swipe-card:active {
@@ -81,34 +82,49 @@
   border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
-/* Swipe indicators */
+/* Enhanced Swipe indicators */
 .swipe-indicator {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 48px;
+  font-size: 32px;
   font-weight: 800;
-  padding: 16px 24px;
-  border-radius: 12px;
+  padding: 20px 28px;
+  border-radius: 16px;
   border: 4px solid;
   z-index: 10;
   pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  transition: opacity 0.1s ease;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.swipe-indicator span {
+  font-size: 24px;
+  letter-spacing: 2px;
 }
 
 .swipe-indicator.like {
   right: 40px;
   color: #00ff88;
   border-color: #00ff88;
-  animation: pulse 0.5s ease;
+  background: rgba(0, 255, 136, 0.1);
+  backdrop-filter: blur(10px);
 }
 
 .swipe-indicator.nope {
   left: 40px;
   color: #ff3b30;
   border-color: #ff3b30;
-  animation: pulse 0.5s ease;
+  background: rgba(255, 59, 48, 0.1);
+  backdrop-filter: blur(10px);
 }
 
+/* Smooth animations */
 @keyframes pulse {
 
   0%,
@@ -117,6 +133,23 @@
   }
 
   50% {
-    transform: translateY(-50%) scale(1.1);
+    transform: translateY(-50%) scale(1.05);
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+  .swipe-card {
+    max-width: 100%;
+    height: 550px;
+  }
+
+  .swipe-indicator {
+    padding: 16px 20px;
+    font-size: 28px;
+  }
+
+  .swipe-indicator span {
+    font-size: 20px;
   }
 }

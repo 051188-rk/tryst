@@ -32,11 +32,16 @@ export default function Chats() {
     )
   }
 
+  const totalUnread = matches.reduce((sum, m) => sum + (m.unreadCount || 0), 0);
+
   return (
     <div className="page container">
       <div className="chats-header">
         <h2>Messages</h2>
-        <p className="muted">{matches.length} conversation{matches.length !== 1 ? 's' : ''}</p>
+        <p className="muted">
+          {matches.length} conversation{matches.length !== 1 ? 's' : ''}
+          {totalUnread > 0 && ` · ${totalUnread} unread`}
+        </p>
       </div>
 
       {matches.length === 0 ? (
@@ -53,21 +58,26 @@ export default function Chats() {
 
             return (
               <Link to={'/chat/' + m._id} key={m._id} className="chat-row">
-                <img
-                  src={otherUser.photos?.[0]?.url || 'https://via.placeholder.com/56'}
-                  className="avatar"
-                  alt={otherUser.name}
-                />
+                <div className="avatar-wrapper">
+                  <img
+                    src={otherUser.photos?.[0]?.url || 'https://via.placeholder.com/56'}
+                    className="avatar"
+                    alt={otherUser.name}
+                  />
+                  {m.unreadCount > 0 && (
+                    <div className="unread-badge">{m.unreadCount}</div>
+                  )}
+                </div>
                 <div className="chat-info">
                   <div className="chat-name">{otherUser.name}</div>
-                  <div className="muted chat-preview">
+                  <div className={`chat-preview ${m.unreadCount > 0 ? 'unread' : ''}`}>
                     {m.lastMessage?.text || "Start a conversation"}
                   </div>
                 </div>
                 <div className="chat-meta">
-                  {m.lastMessageAt && (
+                  {m.lastMessage?.createdAt && (
                     <div className="muted chat-time">
-                      {new Date(m.lastMessageAt).toLocaleDateString()}
+                      {new Date(m.lastMessage.createdAt).toLocaleDateString()}
                     </div>
                   )}
                 </div>

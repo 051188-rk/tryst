@@ -6,7 +6,8 @@ const MessageSchema = new mongoose.Schema({
   text: String,
   attachments: [{ url: String, public_id: String }],
   createdAt: { type: Date, default: Date.now },
-  readAt: Date
+  readAt: Date,
+  readBy: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }]
 });
 MessageSchema.index({ match: 1, createdAt: -1 });
 
