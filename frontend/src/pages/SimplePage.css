@@ -1,24 +1,30 @@
 .page-header {
     text-align: center;
-    margin-bottom: 24px;
+    margin-bottom: 32px;
+    padding-top: 20px;
 }
 
 .page-header h2 {
     margin-bottom: 8px;
+    font-size: 32px;
 }
 
 .list-card {
     padding: 0;
     overflow: hidden;
+    background: #111;
+    border-radius: 24px;
+    border: 1px solid var(--border);
 }
 
 .list-row {
     display: flex;
     align-items: center;
     gap: 16px;
-    padding: 16px 20px;
+    padding: 20px;
     border-bottom: 1px solid var(--border);
     transition: all 0.2s ease;
+    text-decoration: none;
 }
 
 .list-row:last-child {
@@ -26,7 +32,7 @@
 }
 
 .list-row:hover {
-    background: var(--muted);
+    background: rgba(255, 255, 255, 0.03);
 }
 
 .list-info {
@@ -35,31 +41,37 @@
 }
 
 .list-name {
-    font-weight: 700;
+    font-weight: 600;
     font-size: 16px;
     margin-bottom: 4px;
-    color: var(--text);
+    color: var(--white);
     text-decoration: none;
     transition: color 0.2s ease;
+    font-family: var(--font-sans);
+    display: block;
 }
 
 .list-name:hover {
-    color: var(--primary);
+    color: var(--pink);
 }
 
 .list-info .muted {
     font-size: 14px;
+    color: var(--text-muted);
 }
 
 .empty-state {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 16px;
-    padding: 60px 20px;
+    gap: 20px;
+    padding: 80px 20px;
     text-align: center;
+    color: var(--text-muted);
 }
 
 .empty-state h3 {
     margin: 0;
+    color: var(--white);
+    font-size: 24px;
 }

@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import './Profile.css'
 import AuthContext from '../context/AuthContext.jsx'
 import { useNavigate } from 'react-router-dom';
-import { IoLogOut, IoSettings, IoPerson } from 'react-icons/io5'
+import { IoLogOut, IoSettings, IoPerson, IoSparkles } from 'react-icons/io5'
 
 export default function Profile() {
   const { user, logout } = useContext(AuthContext);
@@ -45,6 +45,10 @@ export default function Profile() {
           </div>
 
           <div className="profile-actions">
+            <button className="btn primary profile-btn" onClick={() => nav('/premium')}>
+              <IoSparkles size={20} />
+              Go Premium
+            </button>
             <button className="btn ghost profile-btn">
               <IoSettings size={20} />
               Edit profile

@@ -35,8 +35,8 @@ export default function BottomNav() {
         {items.map((item, index) => {
           const isActive = loc.pathname === item.to;
           return (
-            <div 
-              key={item.to} 
+            <div
+              key={item.to}
               className={`nav-item ${isActive ? 'active' : ''}`}
               onClick={() => handleClick(item.to)}
               onMouseEnter={() => handleMouseEnter(index)}
